@@ -10,7 +10,7 @@
               </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile v-for="(child, i) in item.children" :key="i">
+          <v-list-tile v-for="(child, i) in item.children" :key="i" @click="noop">
             <v-list-tile-action v-if="child.icon">
               <v-icon>{{ child.icon }}</v-icon>
             </v-list-tile-action>
@@ -21,7 +21,7 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list-group>
-        <v-list-tile v-else :key="item.text">
+        <v-list-tile v-else :key="item.text" @click="noop">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -41,26 +41,36 @@ export default {
   data() {
     return {
       items: [
-        { icon: 'apps', text: '菜单01'},
-        { icon: 'apps', text: '菜单02' },
-        { icon: 'apps', text: '菜单03' },
+        { icon: 'home', text: '主页' },
         {
-          icon: 'apps',
-          text: '菜单04',
+          icon: 'widgets',
+          text: '常用功能',
           model: false,
           children: [
             { text: '菜单04-01', icon: 'apps' },
             { text: '菜单04-02', icon: 'apps' }
           ]
         },
-        { icon: 'apps', text: '菜单05' }
+        {
+          icon: 'settings',
+          text: '系统设置',
+          children: [
+            { text: '系统信息', icon: 'apps' },
+            { text: '菜单04-02', icon: 'apps' }
+          ]
+        },
+        { icon: 'apps', text: '菜单02' },
+        { icon: 'apps', text: '菜单03' }
       ]
     }
   },
+  methods: {
+    noop(){}
+  },
   computed: {
     visible: {
-      set(){},
-      get(){
+      set() {},
+      get() {
         return this.$store.state.sideMenuVisible
       }
     }
