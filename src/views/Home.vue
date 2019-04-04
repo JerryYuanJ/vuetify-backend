@@ -3,7 +3,9 @@
     <j-header></j-header>
     <j-menu></j-menu>
     <v-content>
-      <router-view></router-view>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
     </v-content>
     <j-footer></j-footer>
   </div>
