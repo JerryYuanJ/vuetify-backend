@@ -1,14 +1,11 @@
-const mockData = require('../mock/test.json')
+const {user} = require('../mock/test.js')
 const path = require('path')
 
 module.exports = {
   devServer: {
     port: process.env.PORT,
     before(app){
-      apiFactory.call(app, '/test.json', mockData)
-      apiFactory.call(app, '/test2.json', mockData)
-      apiFactory.call(app, '/test3.json', mockData)
-      apiFactory.call(app, '/test4.json', mockData)
+      apiFactory.call(app, '/test.json', user)
     }
   }
 }
