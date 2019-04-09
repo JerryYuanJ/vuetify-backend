@@ -1,19 +1,34 @@
 <template>
   <div class="j-header">
-    <v-toolbar :clipped-left="$vuetify.breakpoint.lgAndUp" color="blue darken-3" dark app fixed>
-      <v-toolbar-title class="ml-0 pl-3 header-title-text">
-        <v-toolbar-side-icon @click.stop="toggleMenu"></v-toolbar-side-icon>
-        <span class="hidden-sm-and-down">后台管理系统</span>
-      </v-toolbar-title>
+    <v-toolbar
+      dark
+      app
+      fixed
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      color="blue darken-3"
+    >
+      <v-toolbar-side-icon @click.stop="toggleMenu"></v-toolbar-side-icon>
+      <v-toolbar-title>后台管理系统</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>notifications</v-icon>
-      </v-btn>
-      <v-btn icon large>
-        <v-avatar size="32px" tile>
-          <v-icon>person</v-icon>
-        </v-avatar>
-      </v-btn>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-menu
+          transition="slide-y-transition"
+          offset-y
+          nudge-bottom="10"
+        >
+          <v-avatar slot="activator" size="30px">
+            <img
+              src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+              alt="Avatar"
+            />
+          </v-avatar>
+          <v-list>
+            <v-list-tile v-for="(item, index) in items" @click="onMenuItemClick" :key="index">
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
     </v-toolbar>
   </div>
 </template>
@@ -21,11 +36,20 @@
 <script>
 export default {
   methods: {
-    toggleMenu(){
-      this.$store.commit('toggleSideMenu')
+    toggleMenu() {
+      this.$store.commit("toggleSideMenu");
+    },
+    onMenuItemClick() {
+      
     }
-  }
-}
+  },
+  data: () => ({
+    items: [
+      { title: "个人资料" },
+      { title: "退出" }
+    ]
+  })
+};
 </script>
 
 <style lang='scss' scoped>
