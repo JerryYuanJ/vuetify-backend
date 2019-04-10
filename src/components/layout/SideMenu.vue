@@ -7,13 +7,12 @@
     app
   >
     <v-list dense>
-      <template v-for="item in items">
+      <template v-for="item in menu">
         <v-list-group
-          v-if="item.children"
-          v-model="item.model"
+          @click="onClickMenu(item)"
           :key="item.text"
           :prepend-icon="item.icon"
-          append-icon="keyboard_arrow_down"
+          :append-icon="item.children ? 'keyboard_arrow_down' : ''"
         >
           <v-list-tile slot="activator">
             <v-list-tile-content>
@@ -22,10 +21,11 @@
               </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+
           <v-list-tile
             v-for="(child, i) in item.children"
             :key="i"
-            @click="noop"
+            @click="onClickMenu(child)"
           >
             <v-list-tile-action v-if="child.icon">
               <v-icon>{{ child.icon }}</v-icon>
@@ -37,51 +37,27 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list-group>
-        <v-list-tile v-else :key="item.text" @click="noop">
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              {{ item.text }}
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
       </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
+import { menu } from '@/utils/const'
+
 export default {
   data() {
     return {
-      items: [
-        { icon: "home", text: "主页" },
-        {
-          icon: "widgets",
-          text: "常用功能",
-          model: false,
-          children: [
-            { text: "常用功能", icon: "apps" },
-            { text: "菜单04-02", icon: "apps" }
-          ]
-        },
-        {
-          icon: "settings",
-          text: "系统设置",
-          children: [
-            { text: "系统信息", icon: "apps" },
-            { text: "菜单04-02", icon: "apps" }
-          ]
-        },
-        { icon: "apps", text: "菜单02" },
-        { icon: "apps", text: "菜单03" }
-      ]
+      menu
     };
   },
   methods: {
-    noop() {}
+    noop() {},
+    onClickMenu(menu) {
+      if(menu && !menu.children) {
+        this.$router.push({name: menu.name})
+      }
+    }
   },
   computed: {
     visible: {

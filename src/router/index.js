@@ -4,6 +4,7 @@ const Home = () => import(/* webpackChunkName: 'home' */ '@/views/Home.vue')
 const DashBoard = () => import(/* webpackChunkName: 'home' */ '@/views/DashBoard.vue')
 
 import user from './user'
+import error from './error'
 
 Vue.use(Router)
 
@@ -11,21 +12,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
       component: Home,
+      name: 'home',
       children: [
         {
-          name: 'DashBoard',
+          name: 'dashboard',
           path: '',
           component: DashBoard
         }
       ]
     },
     ...user,
+    ...error,
     // any unknown router will fallback to dashboard
     {
       path: '*',
-      redirect: '/'
+      redirect: '/404'
     }
   ]
 })

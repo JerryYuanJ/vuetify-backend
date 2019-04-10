@@ -1,5 +1,4 @@
 const {user} = require('../mock/test.js')
-const path = require('path')
 
 module.exports = {
   devServer: {
