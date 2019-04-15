@@ -8,22 +8,66 @@
  */
 export const menu = [
   { icon: "home", text: "主页", name: 'dashboard' },
+  { icon: "timeline", text: "更新日志", name: 'timeline' },
+  {
+    icon: "view_quilt",
+    text: "数据展示",
+    children: [
+      { text: "多级列表", icon: "list"},
+      { text: "数据列表", icon: "view_column"},
+      { text: "数据表格", icon: "grid_on" },
+      { text: "多页签视图", icon: "tab"},
+      { text: "统计图", icon: "bar_chart"},
+    ]
+  },
   {
     icon: "widgets",
-    text: "常用功能",
+    text: "常用组件",
     children: [
-      { text: "常用功能", icon: "apps", name: 'test-1' },
-      { text: "菜单04-02", icon: "apps", name: 'test-2' }
+      { text: "表单组件", icon: "border_color"},
+      { text: "弹框组件", icon: "notifications"},
+      { text: "展示组件", icon: "visibility"}
     ]
   },
   {
     icon: "settings",
     text: "系统设置",
     children: [
-      { text: "系统信息", icon: "apps", name: 'test-3' },
-      { text: "菜单04-02", icon: "apps", name: 'test-4' }
+      { text: "通用设置", icon: "brightness_high"},
+      { text: "样式设置", icon: "flare"},
     ]
   },
-  { icon: "apps", text: "菜单02" },
-  { icon: "apps", text: "菜单03" }
+  {
+    icon: "error",
+    text: "错误页面",
+    children: [
+      { text: "404", icon: "help" },
+    ]
+  },
+]
+
+/**
+ * 项目更新记录, 每一条reacod的含义:
+ *  title: 标题 requiered
+ *  detail: 更新详情 requiered
+ *  date: 更新时间 required
+ *  isBig: 是否是大更新,对应的dot的大小会改变 optional
+ *  color: 标题栏的颜色 optional
+ *  icon: dot对应的icon的颜色, optional
+ */
+export const history = [
+  {
+    title: '项目初始化',
+    detail: '基于vue-cli3创建项目。项目UI库选用的是具有MD风格的vuetify，同时引入了vue全家桶的标配: vue-router 和 vuex。',
+    date: '2019-04-09',
+    isBig: true,
+    color: 'cyan'
+  },
+  {
+    title: 'UI初始化',
+    detail: '搭建项目UI布局，完善左侧菜单栏和顶部导航栏。同时添加了timeline界面',
+    date: '2019-04-13',
+    isBig: false,
+    color: 'green'
+  }
 ]

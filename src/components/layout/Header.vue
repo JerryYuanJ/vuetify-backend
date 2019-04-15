@@ -10,12 +10,16 @@
       <v-toolbar-side-icon @click.stop="toggleMenu"></v-toolbar-side-icon>
       <v-toolbar-title>后台管理系统</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-badge overlap class="mr-4">
+        <div slot="badge">
+          <span>3</span>
+        </div>
+        <v-avatar size="30px" color="purple">
+          <v-icon dark>notifications</v-icon>
+        </v-avatar>
+      </v-badge>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-menu
-          transition="slide-y-transition"
-          offset-y
-          nudge-bottom="10"
-        >
+        <v-menu transition="slide-y-transition" offset-y nudge-bottom="10">
           <v-avatar slot="activator" size="30px">
             <img
               src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
@@ -23,7 +27,11 @@
             />
           </v-avatar>
           <v-list>
-            <v-list-tile v-for="(item, index) in items" @click="onMenuItemClick" :key="index">
+            <v-list-tile
+              v-for="(item, index) in items"
+              @click="onMenuItemClick(item)"
+              :key="index"
+            >
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
             </v-list-tile>
           </v-list>
@@ -39,15 +47,14 @@ export default {
     toggleMenu() {
       this.$store.commit("toggleSideMenu");
     },
-    onMenuItemClick() {
-      
+    onMenuItemClick(item) {
+      if(item.name === 'github') {
+        window.open('https://github.com/JerryYuanJ/vuetify-backend', '_blank')
+      }
     }
   },
   data: () => ({
-    items: [
-      { title: "个人资料" },
-      { title: "退出" }
-    ]
+    items: [{ title: "个人资料" }, { title: "退出" }, { title: "GITHUB", name: 'github' }]
   })
 };
 </script>

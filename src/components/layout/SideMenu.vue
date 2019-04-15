@@ -23,6 +23,7 @@
           </v-list-tile>
 
           <v-list-tile
+            class="sub-menu"
             v-for="(child, i) in item.children"
             :key="i"
             @click="onClickMenu(child)"
@@ -70,5 +71,10 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
+  .sub-menu{
+    .v-list__tile__action {
+      justify-content: center;
+    }
+  }
 </style>

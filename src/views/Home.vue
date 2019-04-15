@@ -4,7 +4,9 @@
     <j-menu></j-menu>
     <v-content>
       <v-container fluid>
-        <router-view></router-view>
+        <transition name="slide-y-reverse-transition">
+          <router-view></router-view>
+        </transition>
       </v-container>
     </v-content>
     <j-footer></j-footer>
