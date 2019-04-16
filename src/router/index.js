@@ -4,8 +4,9 @@ const Home = () => import(/* webpackChunkName: 'home' */ '@/views/Home.vue')
 const DashBoard = () => import(/* webpackChunkName: 'home' */ '@/views/DashBoard.vue')
 const Timeline = () => import(/* webpackChunkName: 'home' */ '@/views/ProjectTimeline.vue')
 
-import user from './user'
-import error from './error'
+import user from './modules/user'
+import error from './modules/error'
+import demoPages from './modules/demo-page'
 
 Vue.use(Router)
 
@@ -30,7 +31,8 @@ export default new Router({
       name: 'home',
       children: [
         ...glabal,
-        ...user
+        ...user,
+        ...demoPages
       ]
     },
     ...error,

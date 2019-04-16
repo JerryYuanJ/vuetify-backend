@@ -1,10 +1,10 @@
-const {user} = require('../mock/test.js')
+const {employees} = require('../mock/demo')
 
 module.exports = {
   devServer: {
     port: process.env.PORT,
     before(app){
-      apiFactory.call(app, '/test.json', user)
+      apiFactory.call(app, '/demo/test.json', employees)
     }
   }
 }

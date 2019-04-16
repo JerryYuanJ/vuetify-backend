@@ -1,7 +1,6 @@
 const { Random } = require("mockjs")
 
 // 一些常用的生成器
-// 不适合在列表中使用，应该列表项的值会保持一致，不会随机
 
 //======= person heplers ======//
 

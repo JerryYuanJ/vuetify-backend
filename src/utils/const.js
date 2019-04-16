@@ -14,7 +14,7 @@ export const menu = [
     text: "数据展示",
     children: [
       { text: "多级列表", icon: "list"},
-      { text: "数据列表", icon: "view_column"},
+      { text: "数据列表", icon: "view_column", name: 'multi-col'},
       { text: "数据表格", icon: "grid_on" },
       { text: "多页签视图", icon: "tab"},
       { text: "统计图", icon: "bar_chart"},
@@ -69,5 +69,13 @@ export const history = [
     date: '2019-04-13',
     isBig: false,
     color: 'green'
+  },
+  {
+    title: '添加界面，完善数据mock',
+    detail: `添加了多列数据页面的展示(multi-col)，给每一项添加了hover的效果; 
+            完善了mock服务，使用工厂函数返回对象，确保列表中的每一项都是随机的`,
+    date: '2019-04-16',
+    isBig: false,
+    color: 'blue'
   }
 ]
