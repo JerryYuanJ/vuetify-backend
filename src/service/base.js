@@ -1,9 +1,10 @@
 import axios from 'axios'
 
+const baseUrl = process.env.VUE_APP_BASE_URL;
 function http (options) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
-      baseURL: '/demo', // TODO should automatically change via envs
+      baseURL: baseUrl + '/demo',
       timeout: 20000
     })
     instance(options)

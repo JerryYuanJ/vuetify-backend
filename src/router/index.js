@@ -4,7 +4,7 @@ const Home = () => import(/* webpackChunkName: 'home' */ '@/views/Home.vue')
 const DashBoard = () => import(/* webpackChunkName: 'home' */ '@/views/DashBoard.vue')
 const Timeline = () => import(/* webpackChunkName: 'home' */ '@/views/ProjectTimeline.vue')
 
-import user from './modules/user'
+import {user} from './modules/user'
 import error from './modules/error'
 import demoPages from './modules/demo-page'
 
@@ -31,10 +31,10 @@ export default new Router({
       name: 'home',
       children: [
         ...glabal,
-        ...user,
         ...demoPages
       ]
     },
+    ...user,
     ...error,
     // any unknown router will fallback to dashboard
     {
