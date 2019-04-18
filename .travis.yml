@@ -11,11 +11,11 @@ script:
 after_script:
   - cd ./dist
   - git init
-  - git config user.name "${USER_NAME}"
-  - git config user.email "${USER_EMAIL}"
   - git remote add origin ${TARGET}
   - git pull origin master
   - git add .
+  - git config user.name "${USER_NAME}"
+  - git config user.email "${USER_EMAIL}"
   - git commit -m "update"
   - git push -f origin master
 
