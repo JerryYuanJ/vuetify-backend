@@ -11,7 +11,7 @@ script:
 after_script:
   - cd ./dist
   - git init
-  - git config --global user.name "${USER_NAME}"
+  - git config --global user.name "${USER_USERNAME}"
   - git config --global user.email "${USER_EMAIL}"
   - git add .
   - git commit -m "update"
