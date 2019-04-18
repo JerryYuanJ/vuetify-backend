@@ -1,0 +1,24 @@
+language: node_js
+# nodejs版本
+node_js: 
+    - '8.11.3'
+
+install:
+  - npm install
+script:
+  - npm run build
+
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "${USER_NAME}"
+  - git config user.email "${USER_EMAIL}"
+  - git add .
+  - git commit -m "update"
+  - git push --force --quiet "https://${token}@${TARGET}" master:${P_BRANCH}
+# E: Build LifeCycle
+
+# 只对某个分支行为生效
+branches:
+  only:
+    - master
