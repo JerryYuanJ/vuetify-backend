@@ -14,7 +14,7 @@
 
 ### How to run 
 
-1. Clone it to your local: `https://github.com/JerryYuanJ/vuetify-backend.git`
+1. Clone it to your local: `git clone https://github.com/JerryYuanJ/vuetify-backend.git`
 2. Install the packages: `npm install`
 3. Compiles and hot-reloads for development: `npm run serve`
 > You can modify the **port** in `/config/dev.js`
