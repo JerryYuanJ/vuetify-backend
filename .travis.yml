@@ -11,13 +11,11 @@ script:
 after_script:
   - cd ./dist
   - git init
-  - git remote add origin ${TARGET}
-  - git config --global user.name "${USER_NAME}"
-  - git config --global user.email "${USER_EMAIL}"
-  - git pull origin master
+  - git config user.name "${USER_NAME}"
+  - git config user.email "${USER_EMAIL}"
   - git add .
   - git commit -m "update"
-  - git push -f origin master
+  - git push -f "https://${token}@${TARGET}" master
 
 branches:
   only:
