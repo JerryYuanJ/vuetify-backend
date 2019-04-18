@@ -15,7 +15,12 @@
         <v-window v-model="step">
           <v-window-item :value="1">
             <v-card-text>
-              <v-text-field label="邮箱" value="jerry@yuan.com"></v-text-field>
+              <v-text-field
+                label="邮箱"
+                value="jerry@yuan.com"
+                :rules="[rules.required, rules.email]"
+              >
+              </v-text-field>
               <span class="caption grey--text text--darken-1">
                 该邮箱将会作为您的登陆账号
               </span>
@@ -24,7 +29,7 @@
 
           <v-window-item :value="2">
             <v-card-text>
-              <v-text-field label="密码" type="password"></v-text-field>
+              <v-text-field label="密码" type="password" :rules="[rules.maxLength]"></v-text-field>
               <v-text-field label="确认密码" type="password"></v-text-field>
               <span class="caption grey--text text--darken-1">
                 请为您的账号创建密码
@@ -65,9 +70,16 @@
 </template>
 
 <script>
+import { emptyChecker, emailChecker, lengthChecker } from '@/utils/validator'
+
 export default {
   data: () => ({
-    step: 1
+    step: 1,
+    rules: {
+      required: emptyChecker("邮箱"),
+      email: emailChecker,
+      maxLength: lengthChecker('密码', 6, 10)
+    }
   }),
 
   computed: {

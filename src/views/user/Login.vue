@@ -11,6 +11,7 @@
               prepend-icon="person"
               name="username"
               label="用户名"
+              clearable
               type="text"
             ></v-text-field>
             <v-text-field
@@ -18,7 +19,9 @@
               prepend-icon="lock"
               name="password"
               label="密码"
-              type="password"
+              :type="showPassword ? 'text' : 'password'"
+              :append-icon="showPassword ? 'visibility' : 'visibility_off'"
+              @click:append="showPassword = !showPassword"
             ></v-text-field>
           </v-form>
         </v-card-text>
@@ -34,11 +37,8 @@
 <script>
 export default {
   data: () => ({
-    drawer: null
-  }),
-  props: {
-    source: String
-  }
+    showPassword: false
+  })
 };
 </script>
 
