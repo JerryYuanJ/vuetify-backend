@@ -13,12 +13,12 @@ after_script:
   - git init
   - git config user.name "${USER_NAME}"
   - git config user.email "${USER_EMAIL}"
+  - git remote add origin ${TARGET}
+  - git pull origin master
   - git add .
   - git commit -m "update"
-  - git push --force --quiet "https://${token}@${TARGET}" master:${P_BRANCH}
-# E: Build LifeCycle
+  - git push -f origin master
 
-# 只对某个分支行为生效
 branches:
   only:
     - master
