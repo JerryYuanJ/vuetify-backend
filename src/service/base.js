@@ -10,8 +10,8 @@ function http (options) {
     instance(options)
       .then(response => {
         const res = response.data
-        // TODO this timeout is for mocking
-        setTimeout(resolve, 3000, res)
+        process.env.NODE_ENV === "development" ?
+          setTimeout(resolve, 3000, res) : resolve(res)
       })
       .catch(error => {
         reject(error)

@@ -5,7 +5,7 @@ module.exports = {
     port: 9999,
     open: true,
     before(app){
-      apiFactory.call(app, '/demo/test.json', employees)
+      apiFactory.call(app, '/demo/employee', employees)
     }
   }
 }

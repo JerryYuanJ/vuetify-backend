@@ -16,8 +16,10 @@
       <template slot="item" slot-scope="props">
         <v-flex xs12 sm6 md4 lg3>
           <v-hover>
-            <v-card slot-scope="{hover}"
-                    :class="`elevation-${hover ? 12 : 2}`">
+            <v-card
+              slot-scope="{ hover }"
+              :class="`elevation-${hover ? 12 : 2}`"
+            >
               <v-card-title
                 ><h4>{{ props.item.name }}</h4></v-card-title
               >
@@ -87,7 +89,9 @@ export default {
   }),
   created() {
     getEmployeeList().then(res => {
-      this.items = res;
+      if (res.success) {
+        this.items = res.data;
+      }
     });
   }
 };
